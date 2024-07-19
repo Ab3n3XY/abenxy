@@ -2,104 +2,105 @@
 
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function Certificates() {
+  const certificateData = [
+    {
+      id: 1,
+      title: "Django for Everybody Specialization",
+      image: "/images/django-specialization.png",
+      details: [
+        "Web Application Technologies and Django",
+        "Building Web Applications in Django",
+        "Django Features and Libraries",
+        "Using JavaScript, jQuery, and JSON in Django",
+      ],
+      link: "https://coursera.org/share/d17d04d38ef0df257bcb65ea3b29a541"
+    },
+    {
+      id: 2,
+      title: "IBM Full Stack Software Developer",
+      image: "/images/ibm-fullstack.png",
+      details: [
+        "Introduction to Cloud Computing",
+        "Introduction to HTML, CSS, JavaScript",
+        "Getting Started with Git and GitHub",
+        "Developing Front-End Apps with React",
+        "Back-End Apps with Node.js and Express",
+        "Python for Data Science, AI & Development",
+        "Developing AI App with Python and Flask",
+        "Django with SQL and Databases",
+        "Containers w/Docker, Kubernetes & OpenShift",
+        "Development using Microservices and Serverless",
+        "Full Stack Capstone Project",
+        "Full Stack Software Developer Assessment",
+      ],
+      link: "https://coursera.org/share/40c65b4af8526bc25cadc22b2b55baa6"
+    },
+    {
+      id: 3,
+      title: "Advanced Django: Mastering Django and Django Rest Framework",
+      image: "/images/advanced-django.png",
+      details: [
+        "Building a Blog",
+        "Introduction to Django Rest Framework",
+        "Advanced Django Rest Framework",
+        "External APIs and Task Queuing",
+      ],
+      link: "https://coursera.org/share/e7d727eb842087ca2296810fd3c416bc"
+    },
+    {
+      id: 4,
+      title: "Machine Learning",
+      image: "/images/machine-learning.png",
+      details: [
+        "Supervised Machine Learning: Regression and Classification",
+        "Advanced Learning Algorithms: TensorFlow, decision tree (random forests and XGBoost)",
+        "Unsupervised Learning: Recommenders, Reinforcement Learning",
+      ],
+      link: "https://coursera.org/share/e606e09ac9cb2b46562515efb734e59c"
+    },
+  ];
+
   return (
-    <section id="certificates" className="py-24">
-      <div className="text-center">
-        <h2 className="text-5xl font-bold text-teal-600 dark:text-teal-400 mb-6">Certificates</h2>
+    <section id="certificates" className="py-24 bg-gray-100 dark:bg-gray-900">
+      <div className="text-center mb-12">
+        <h2 className="text-5xl font-bold text-teal-600 dark:text-teal-400 mb-6">
+          Certificates
+        </h2>
       </div>
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-          {/* Django for Everybody Specialization */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-              Django for Everybody Specialization
+        {certificateData.map((cert) => (
+          <div key={cert.id} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+            <h3 className="text-2xl text-center font-semibold text-teal-500 mb-4">
+              {cert.title}
             </h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
-              <li>Web Application Technologies and Django</li>
-              <li>Building Web Applications in Django</li>
-              <li>Django Features and Libraries</li>
-              <li>Using JavaScript, jQuery, and JSON in Django</li>
-            </ul>
-          </motion.div>
-          {/* IBM Full Stack Software Developer */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-              IBM Full Stack Software Developer
-            </h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
-              <li>Introduction to Cloud Computing</li>
-              <li>Introduction to Web Development with HTML, CSS, JavaScript</li>
-              <li>Getting Started with Git and GitHub</li>
-              <li>Developing Front-End Apps with React</li>
-              <li>Developing Back-End Apps with Node.js and Express</li>
-              <li>Python for Data Science, AI & Development</li>
-              <li>Application Development with Python, Django, and Flask</li>
-              <li>Databases and SQL for Developers</li>
-            </ul>
-          </motion.div>
-          {/* Advanced Django: Mastering Django and Django Rest Framework */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-              Advanced Django: Mastering Django and Django Rest Framework
-            </h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
-              <li>Mastering Django: Models, Forms, and Views</li>
-              <li>Building and Deploying REST APIs with Django Rest Framework</li>
-              <li>Authentication and Permissions</li>
-              <li>Advanced Querying and Serialization</li>
-              <li>Optimizing and Deploying REST APIs</li>
-            </ul>
-          </motion.div>
-          {/* Machine Learning */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-              Machine Learning
-            </h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
-              <li>Supervised Machine Learning: Regression and Classification</li>
-              <li>Advanced Learning Algorithms: TensorFlow, decision tree (random forests and XGBoost)</li>
-              <li>Unsupervised Learning: Recommenders, Reinforcement Learning</li>
-            </ul>
-          </motion.div>
-          {/* AI Development */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
-              AI Development
-            </h3>
-            <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-6">
-              <li>AI model development with Python and Flask</li>
-              <li>External APIs</li>
-              <li>Containerization (Docker), Kubernetes, OpenShift</li>
-              <li>Cloud deployment and management</li>
-              <li>Microservices architecture</li>
-              <li>Serverless computing</li>
-              <li>IBM Code Engine</li>
-            </ul>
-          </motion.div>
-        </div>
+            <div className="flex flex-col md:flex-row items-center md:items-start">
+              <div className="w-full mt-4 md:w-2/5 mb-4 md:mb-0 md:pr-6">
+                {cert.details.map((detail, index) => (
+                  <button
+                    key={index}
+                    className="block w-full h-auto text-left mb-1 p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-sm rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+                  >
+                    {detail}
+                  </button>
+                ))}
+              </div>
+              <div className="w-full md:w-3/5 flex justify-center md:justify-end mt-4">
+                <img src={cert.image} alt={cert.title} className="w-full h-auto rounded-lg " />
+              </div>
+            </div>
+            <div className="mt-6 text-center">
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-teal-700 p-2 text-white text-lg rounded-md hover:bg-teal-600 transition duration-300 transform hover:scale-105"
+              >
+                View Certificate Online
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
