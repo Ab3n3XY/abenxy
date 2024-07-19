@@ -44,7 +44,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed bg-primary text-white p-4 w-full top-0 z-50">
+    <header className="fixed bg-gray-800 bg-opacity-70 text-white p-4 w-full top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center">
         <Link href="/">
           <div className="flex pl-10 items-center cursor-pointer hover:opacity-80">

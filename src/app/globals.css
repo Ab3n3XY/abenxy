@@ -23,7 +23,3 @@ a {
   transition: all 0.3s ease;
   padding: 0.5rem 1rem;
 }
-
-.active-nav-link {
-color: rgb(0, 137, 123);
-}

@@ -18,7 +18,7 @@ export default function HomePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
-      <main className="bg-white pt-10 px-10 dark:bg-gray-900 md:px-20 lg:px-40">
+      <main className="bg-white pt-2 px-10 dark:bg-gray-900 md:px-20 lg:px-40 font-sans">
         <div className="text-center p-8 py-2" id="home" >
             <h2 className="text-5xl mt-20 py-2 text-teal-600 font-medium dark:text-teal-400 md:text-6xl">
               Abenezer Shiferaw
@@ -34,7 +34,7 @@ export default function HomePage() {
                 alt="Developer"
               />
             </div>
-            <p className="text-md py-5 leading-4 text-gray-800 dark:text-gray-200 max-w-2xl mx-auto md:text-xl">
+            <p className="text-xl text-gray-700 dark:text-gray-300 md:mx-20">
               Experienced in building web applications with modern technologies.
               I can help you bring your web app ideas to life!
             </p>

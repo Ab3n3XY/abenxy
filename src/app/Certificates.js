@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 
 export default function Certificates() {
   return (
-    <section id="certificates" className="py-10">
+    <section id="certificates" className="py-24">
       <div className="text-center">
-        <h2 className="text-4xl font-bold text-teal-600 dark:text-teal-400 mb-6">Certificates</h2>
+        <h2 className="text-5xl font-bold text-teal-600 dark:text-teal-400 mb-6">Certificates</h2>
       </div>
       <div className="max-w-4xl mx-auto">
         <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
