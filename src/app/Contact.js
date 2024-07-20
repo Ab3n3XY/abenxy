@@ -70,7 +70,7 @@ const Contact = ({ closePopup }) => {
           />
         </svg>
         </button>
-        <h1 className="text-2xl font-bold text-primary text-center mb-2">Contact Us</h1>
+        <h1 className="text-2xl font-bold text-primary text-teal-600 text-center mb-2">Contact Us</h1>
         <p className="max-w-xl mx-auto text-md text-gray-600 mb-2">Please leave us a message below, and we'll get back to you promptly.</p>
         <input type="hidden" name="form-name" value="contact" />
           <input
@@ -130,12 +130,12 @@ const Contact = ({ closePopup }) => {
             />
             <span className="ml-2 text-gray-800">
               By submitting this form you agree to the terms of the{' '}
-              <a href="/privacy-policy" className="text-secondary font-bold hover:underline">Privacy Policy</a>.
+              <a href="/privacy-policy" className="text-teal-600 font-bold hover:underline">Privacy Policy</a>.
             </span>
           </label>
           <button
             type="submit"
-            className={`mt-2 min-w-full bg-primary text-white py-2 px-2 rounded-md hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-offset-2 ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`}
+            className={`mt-2 min-w-full bg-teal-600 text-white py-2 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-offset-2 ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`}
             disabled={!isChecked}
           >
             Submit
