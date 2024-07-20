@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
         <p className="mb-4 text-gray-700">I implement reasonable security measures to protect your information, but please be aware that no method of transmission over the internet is completely secure.</p>
 
         <h2 className="text-2xl font-semibold text-teal-600 mt-6 mb-4">Changes to This Privacy Policy</h2>
-        <p className="mb-4 text-gray-700">This Privacy Policy may be updated periodically to reflect changes in practices or legal requirements. Any updates will be posted on this page with an updated "Last Revised" date.</p>
+        <p className="mb-4 text-gray-700">This Privacy Policy may be updated periodically to reflect changes in practices or legal requirements. Any updates will be posted on this page with an updated July 2024 date.</p>
 
       </section>
     </main>
