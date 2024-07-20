@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Contact = ({ closePopup }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
-    fullName: '',
-    address: '',
-    email: '',
-    questionComment: '',
-    phone: ''
+    fullName: "",
+    address: "",
+    email: "",
+    questionComment: "",
+    phone: "",
   });
 
   const handleCheckboxChange = (e) => {
@@ -17,62 +17,72 @@ const Contact = ({ closePopup }) => {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-        setStatus('pending');
-        setError(null);
-        const myForm = event.target;
-        const formData = new FormData(myForm);
-        const res = await fetch('/contact.html', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(formData).toString()
-        });
-        if (res.ok) {
-            setStatus('ok');
-            myForm.reset();
-            closePopup();
-        } else {
-            setStatus('error');
-            setError(`${res.status} ${res.statusText}`);
-        }
+      setStatus("pending");
+      setError(null);
+      const myForm = event.target;
+      const formData = new FormData(myForm);
+      const res = await fetch("/contact.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
+      });
+      if (res.ok) {
+        setStatus("ok");
+        myForm.reset();
+        closePopup();
+      } else {
+        setStatus("error");
+        setError(`${res.status} ${res.statusText}`);
+      }
     } catch (e) {
-        setStatus('error');
-        setError(`${e}`);
+      setStatus("error");
+      setError(`${e}`);
     }
   };
 
   return (
-<div className="font-sans fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-800 bg-opacity-50 w-full h-full flex items-center justify-center overflow-y-auto">
-<div className="p-4 sm:p-8 rounded-lg shadow-lg  h-auto w-full max-w-sm sm:max-w-md relative">
-        <form name="contact" className="bg-white p-4 text-black rounded-md text-sm" method='POST' data-netlify="true" onSubmit={handleFormSubmit}>
-        <input type='hidden' name='form-name' value='contact' />
-        <button
-          onClick={closePopup}
-          className="absolute right-5 top-5 text-gray-800 p-4 hover:text-red-600 focus:outline-none"
-          >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="stroke-current shrink-0 h-8 w-8"
-          fill='white'
-          viewBox="0 0 24 24"
+    <div className="font-sans fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-800 bg-opacity-50 w-full h-full flex items-center justify-center overflow-y-auto">
+      <div className="p-4 sm:p-8 rounded-lg shadow-lg h-auto w-full max-w-sm sm:max-w-md relative">
+        <form
+          name="contact"
+          className="bg-white p-4 text-black rounded-md text-sm"
+          method="POST"
+          data-netlify="true"
+          onSubmit={handleFormSubmit}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        </button>
-        <h1 className="text-2xl font-bold text-primary text-teal-600 text-center mb-2">Contact Us</h1>
-        <p className="max-w-xl mx-auto text-md text-gray-600 mb-2">Please leave us a message below, and we'll get back to you promptly.</p>
-        <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="contact" />
+          <button
+            onClick={closePopup}
+            className="absolute right-5 top-5 text-gray-800 p-4 hover:text-red-600 focus:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="stroke-current shrink-0 h-8 w-8"
+              fill="white"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </button>
+          <h1 className="text-2xl font-bold text-primary text-teal-600 text-center mb-2">
+            Contact Us
+          </h1>
+          <p className="max-w-xl mx-auto text-md text-gray-600 mb-2">
+            Please leave us a message below, and we will get back to you promptly.
+          </p>
+          <input type="hidden" name="form-name" value="contact" />
           <input
             type="text"
             id="fullName"
@@ -129,13 +139,21 @@ const Contact = ({ closePopup }) => {
               required
             />
             <span className="ml-2 text-gray-800">
-              By submitting this form you agree to the terms of the{' '}
-              <a href="/privacy-policy" className="text-teal-600 font-bold hover:underline">Privacy Policy</a>.
+              By submitting this form you agree to the terms of the{" "}
+              <a
+                href="/privacy-policy"
+                className="text-teal-600 font-bold hover:underline"
+              >
+                Privacy Policy
+              </a>
+              .
             </span>
           </label>
           <button
             type="submit"
-            className={`mt-2 min-w-full bg-teal-600 text-white py-2 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-offset-2 ${isChecked ? '' : 'opacity-50 cursor-not-allowed'}`}
+            className={`mt-2 min-w-full bg-teal-600 text-white py-2 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-offset-2 ${
+              isChecked ? "" : "opacity-50 cursor-not-allowed"
+            }`}
             disabled={!isChecked}
           >
             Submit
@@ -144,7 +162,6 @@ const Contact = ({ closePopup }) => {
       </div>
     </div>
   );
-}
-
+};
 
 export default Contact;
