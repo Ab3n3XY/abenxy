@@ -80,7 +80,7 @@ const Contact = ({ closePopup }) => {
             Contact Us
           </h1>
           <p className="max-w-xl mx-auto text-md text-gray-600 mb-2">
-            Please leave us a message below, and we'll get back to you promptly.
+            Please leave us a message below, and we will get back to you promptly.
           </p>
           <input type="hidden" name="form-name" value="contact" />
           <input
