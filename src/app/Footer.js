@@ -13,6 +13,7 @@ export default function Footer() {
       <div className="flex justify-center space-x-8">
         <Link
           href="https://www.linkedin.com/in/ab3nxy/"
+          aria-label="linkedin"
           target="_blank"
           className="text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400"
         >
@@ -20,6 +21,7 @@ export default function Footer() {
         </Link>
         <Link
           href="https://github.com/ab3nxy"
+          aria-label="github"
           target="_blank"
           className="text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400"
         >
@@ -28,6 +30,7 @@ export default function Footer() {
         <a
           href="mailto:dev.abenezer.work@gmail.com"
           className="text-gray-500 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400"
+          aria-label="mailto"
         >
           <FaEnvelope size={36} />
         </a>
