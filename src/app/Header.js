@@ -138,7 +138,7 @@ const Header = () => {
             >
               Contact Us
             </button>
-            <button onClick={toggleTheme} className="text-white focus:outline-none">
+            <button onClick={toggleTheme} className="text-white focus:outline-none" alt="theme">
               {darkMode ? <FaSun className="w-6 h-6" /> : <FaMoon className="w-6 h-6" />}
             </button>
           </div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const Contact = ({ closePopup }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [status, setStatus] = useState(null);
+  const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     fullName: "",
     address: "",
@@ -24,26 +26,26 @@ const Contact = ({ closePopup }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      setStatus("pending");
-      setError(null);
-      const myForm = event.target;
-      const formData = new FormData(myForm);
-      const res = await fetch("/contact.html", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString(),
-      });
-      if (res.ok) {
-        setStatus("ok");
-        myForm.reset();
-        closePopup();
-      } else {
-        setStatus("error");
-        setError(`${res.status} ${res.statusText}`);
-      }
+        setStatus('pending');
+        setError(null);
+        const myForm = event.target;
+        const formData = new FormData(myForm);
+        const res = await fetch('/contact.html', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+        });
+        if (res.ok) {
+            setStatus('ok');
+            myForm.reset();
+            closePopup();
+        } else {
+            setStatus('error');
+            setError(`${res.status} ${res.statusText}`);
+        }
     } catch (e) {
-      setStatus("error");
-      setError(`${e}`);
+        setStatus('error');
+        setError(`${e}`);
     }
   };
 
