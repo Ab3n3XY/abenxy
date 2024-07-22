@@ -60,15 +60,15 @@ export default function Certificates() {
   ];
 
   return (
-    <section id="certificates" className="py-20 md:py-24 bg-gray-100 dark:bg-gray-900">
-      <div className="text-center mb-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-teal-600 dark:text-teal-400 mb-6">
+    <section id="certificates" className="py-20 md:py-24 ">
+      <div className="text-center mb-6 sm:mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-teal-400 light:text-teal-600 mb-6">
           Certificates
         </h2>
       </div>
       <div className="max-w-4xl mx-auto px-4">
         {certificateData.map((cert) => (
-          <div key={cert.id} className="bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-lg mb-8">
+          <div key={cert.id} className="bg-gray-800 light:bg-gray-300 p-4 md:p-6 rounded-lg shadow-lg mb-8">
             <h3 className="text-xl md:text-2xl text-center font-semibold text-teal-500 mb-4">
               {cert.title}
             </h3>
@@ -77,7 +77,7 @@ export default function Certificates() {
                 {cert.details.map((detail, index) => (
                   <button
                     key={index}
-                    className="block w-full h-auto text-left mb-2 p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 text-sm rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition duration-300"
+                    className="block w-full h-auto text-left mb-2 p-2 bg-gray-700 light:bg-gray-200 text-gray-300 light:text-gray-800 text-sm rounded-md hover:bg-gray-600 light:hover:bg-gray-100 transition duration-300"
                   >
                     {detail}
                   </button>
@@ -92,7 +92,7 @@ export default function Certificates() {
                 href={cert.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-teal-700 p-2 text-white text-base md:text-lg rounded-md hover:bg-teal-600 transition duration-300 transform hover:scale-105"
+                className="bg-teal-700 light:bg-teal-600 p-2 text-white text-base md:text-lg rounded-md hover:bg-teal-600 light:hover:bg-teal-500 transition duration-300 transform hover:scale-105"
               >
                 View Certificate Online
               </a>

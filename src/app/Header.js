@@ -11,17 +11,17 @@ const Header = () => {
   const router = useRouter();
   const [activeLink, setActiveLink] = useState(router.pathname);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const [lightMode, setLightMode] = useState(true);
   const [showContact, setShowContact] = useState(false);
 
   useEffect(() => {
     const theme = localStorage.getItem('theme');
     if (theme === 'light') {
       document.documentElement.classList.remove('dark');
-      setDarkMode(false);
+      setLightMode(true);
     } else {
       document.documentElement.classList.add('dark');
-      setDarkMode(true);
+      setLightMode(false);
     }
   }, []);
 
@@ -61,14 +61,14 @@ const Header = () => {
   };
 
   const toggleTheme = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setDarkMode(false);
-    } else {
+    if (lightMode) {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
-      setDarkMode(true);
+      setLightMode(false);
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setLightMode(true);
     }
   };
 
@@ -80,7 +80,7 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-gray-800 bg-opacity-70 text-white p-4 z-50">
+    <header className="fixed top-0 w-full bg-gray-800 bg-opacity-70 light:bg-gray-500 light:bg-opacity-70 font-semibold text-white light:text-white p-4 z-50">
       <nav className="container mx-auto flex justify-between items-center">
         <Link href="/">
           <div className="flex items-center cursor-pointer hover:opacity-80">
@@ -101,7 +101,7 @@ const Header = () => {
           {navLinks.map(({ path, label }) => (
             <Link key={path} href={path}>
               <span
-                className={`nav-link block px-4 py-2 hover:text-teal-600 ${activeLink === path ? 'active-nav-link' : ''} text-sm md:text-base`}
+                className={`nav-link block px-4 py-2 hover:text-teal-400 ${activeLink === path ? 'active-nav-link' : ''} text-sm md:text-base`}
                 onClick={() => handleSetActiveLink(path)}
               >
                 {label}
@@ -110,12 +110,12 @@ const Header = () => {
           ))}
           <button
             onClick={() => { setShowContact(true); setMenuOpen(false); }}
-            className="nav-link block px-4 py-2 text-sm md:text-base hover:text-teal-600"
+            className="nav-link block px-4 py-2 text-sm md:text-base hover:text-teal-400"
           >
             Contact Us
           </button>
-          <button onClick={toggleTheme} className="ml-4 text-white focus:outline-none">
-            {darkMode ? <FaSun className="w-5 h-5 md:w-6 md:h-6" /> : <FaMoon className="w-5 h-5 md:w-6 md:h-6" />}
+          <button onClick={toggleTheme} className="ml-4 text-white focus:outline-none hover:text-yellow-300">
+            {lightMode ? <FaSun className="w-5 h-5 md:w-6 md:h-6" /> : <FaMoon className="w-5 h-5 md:w-6 md:h-6" />}
           </button>
         </div>
       </nav>
@@ -138,8 +138,8 @@ const Header = () => {
             >
               Contact Us
             </button>
-            <button onClick={toggleTheme} className="text-white focus:outline-none" alt="theme">
-              {darkMode ? <FaSun className="w-6 h-6" /> : <FaMoon className="w-6 h-6" />}
+            <button onClick={toggleTheme} className="text-white focus:outline-none" aria-label="change page theme">
+              {lightMode ? <FaSun className="w-5 h-5 md:w-6 md:h-6" /> : <FaMoon className="w-5 h-5 md:w-6 md:h-6" />}
             </button>
           </div>
         </div>

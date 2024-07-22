@@ -8,8 +8,9 @@ const Contact = ({ closePopup }) => {
     fullName: "",
     address: "",
     email: "",
-    questionComment: "",
     phone: "",
+    projectBudget: "",
+    projectDescription: "",
   });
 
   const handleCheckboxChange = (e) => {
@@ -26,35 +27,35 @@ const Contact = ({ closePopup }) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-        setStatus('pending');
-        setError(null);
-        const myForm = event.target;
-        const formData = new FormData(myForm);
-        const res = await fetch('/contact.html', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams(formData).toString()
-        });
-        if (res.ok) {
-            setStatus('ok');
-            myForm.reset();
-            closePopup();
-        } else {
-            setStatus('error');
-            setError(`${res.status} ${res.statusText}`);
-        }
-    } catch (e) {
+      setStatus('pending');
+      setError(null);
+      const myForm = event.target;
+      const formData = new FormData(myForm);
+      const res = await fetch('/contact.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+      if (res.ok) {
+        setStatus('ok');
+        myForm.reset();
+        closePopup();
+      } else {
         setStatus('error');
-        setError(`${e}`);
+        setError(`${res.status} ${res.statusText}`);
+      }
+    } catch (e) {
+      setStatus('error');
+      setError(`${e}`);
     }
   };
 
   return (
     <div className="font-sans fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-gray-800 bg-opacity-50 w-full h-full flex items-center justify-center overflow-y-auto">
-      <div className="p-4 sm:p-8 rounded-lg shadow-lg h-auto w-full max-w-sm sm:max-w-md relative">
+      <div className="p-4 sm:p-8 rounded-lg shadow-lg h-auto w-full max-w-sm sm:max-w-lg relative">
         <form
           name="contact"
-          className="bg-white p-4 text-black rounded-md text-sm"
+          className="bg-gray-100 p-4 text-black rounded-md text-sm font-normal"
           method="POST"
           data-netlify="true"
           onSubmit={handleFormSubmit}
@@ -62,7 +63,7 @@ const Contact = ({ closePopup }) => {
           <input type="hidden" name="form-name" value="contact" />
           <button
             onClick={closePopup}
-            className="absolute right-5 top-5 text-gray-800 p-4 hover:text-red-600 focus:outline-none"
+            className="absolute right-5 top-5 text-gray-400 p-4 hover:text-red-400 focus:outline-none"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +82,9 @@ const Contact = ({ closePopup }) => {
           <h1 className="text-2xl font-bold text-primary text-teal-600 text-center mb-2">
             Contact Us
           </h1>
-          <p className="max-w-xl mx-auto text-md text-gray-600 mb-2">
+          <p className="max-w-xl mx-auto text-center text-md text-gray-600 mb-2">
             Please leave us a message below, and we will get back to you promptly.
           </p>
-          <input type="hidden" name="form-name" value="contact" />
           <input
             type="text"
             id="fullName"
@@ -93,7 +93,7 @@ const Contact = ({ closePopup }) => {
             value={formData.fullName}
             onChange={handleChange}
             required
-            className="mt-1 block w-full border text-black border-gray-400 rounded-md shadow-sm focus:ring-2 focus:ring-black-500 focus:outline-none text-sm:text-md p-2"
+            className="mt-1 block w-full border text-black border-gray-300 rounded-md shadow-sm focus:outline-none text-sm:text-md p-2"
           />
           <input
             type="text"
@@ -103,7 +103,7 @@ const Contact = ({ closePopup }) => {
             value={formData.address}
             onChange={handleChange}
             required
-            className="mt-2 block w-full border border-gray-400 rounded-md shadow-sm focus:ring-2 focus:ring-black-500 focus:outline-none text-sm:text-md p-2"
+            className="mt-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none text-sm:text-md p-2"
           />
           <input
             type="email"
@@ -113,7 +113,7 @@ const Contact = ({ closePopup }) => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="mt-2 mb-2 block w-full border border-gray-400 rounded-md shadow-sm focus:ring-2 focus:ring-black-500 focus:outline-none text-sm:text-md p-2"
+            className="mt-2 mb-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none text-sm:text-md p-2"
           />
           <input
             name="phone"
@@ -122,29 +122,39 @@ const Contact = ({ closePopup }) => {
             placeholder="Phone *"
             value={formData.phone}
             onChange={handleChange}
-            className="mt-2 mb-2 block w-full border border-gray-400 rounded-md shadow-sm focus:ring-2 focus:ring-black-500 focus:outline-none text-sm:text-md p-2"
+            className="mt-2 mb-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none text-sm:text-md p-2"
+          />
+          <input
+            type="text"
+            id="projectBudget"
+            name="projectBudget"
+            placeholder="Budget Range (e.g., $500 - $2000)"
+            value={formData.projectBudget}
+            onChange={handleChange}
+            className="mt-2 mb-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none text-sm:text-md p-2"
           />
           <textarea
-            id="questionComment"
-            name="questionComment"
-            placeholder="Question / Comment"
-            value={formData.questionComment}
+            id="projectDescription"
+            name="projectDescription"
+            placeholder="Brief Description of the Project"
+            value={formData.projectDescription}
             onChange={handleChange}
             rows="2"
-            className="mt-2 block w-full border border-gray-400 rounded-md shadow-sm focus:ring-2 focus:ring-black-500 focus:outline-none text-sm:text-md p-2"
+            className="mt-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none text-sm:text-md p-2"
           />
-          <label className="flex items-center text-sm mt-4">
+          <label className="flex items-center text-sm mt-4 font-normal">
             <input
               type="checkbox"
+              color="green"
               className="form-checkbox h-4 w-4 text-black-600"
               onChange={handleCheckboxChange}
               required
             />
             <span className="ml-2 text-gray-800">
-              By submitting this form you agree to the terms of the{" "}
+            By submitting this form, you agree to our{" "}
               <a
                 href="/privacy-policy"
-                className="text-teal-600 font-bold hover:underline"
+                className="text-teal-600 hover:underline"
               >
                 Privacy Policy
               </a>
@@ -153,7 +163,7 @@ const Contact = ({ closePopup }) => {
           </label>
           <button
             type="submit"
-            className={`mt-2 min-w-full bg-teal-600 text-white py-2 px-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black-500 focus:ring-offset-2 ${
+            className={`mt-2 min-w-full bg-teal-600 text-white py-2 px-2 rounded-md focus:outline-none focus:ring-offset-2 ${
               isChecked ? "" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={!isChecked}
